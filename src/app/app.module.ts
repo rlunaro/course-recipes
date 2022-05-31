@@ -6,9 +6,12 @@ import { AppComponent } from './app.component';
 import { Header } from './header/header.component';
 import { Footer } from './footer/footer.component';
 import { IngredientComponent } from './component/ingredient/ingredient.component';
-import { RecipeListComponent } from './component/recipe-list/recipe-list.component';
-import { ShoppingItemEditComponent } from './component/shopping-item-edit/shopping-item-edit.component';
+import { RecipesComponent } from './component/recipes/recipes.component';
+import { RecipeListComponent } from './component/recipes/recipe-list/recipe-list.component';
+import { RecipeDetailComponent } from './component/recipes/recipe-detail/recipe-detail.component';
+import { RecipeItemComponent } from './component/recipes/recipe-list/recipe-item/recipe-item.component';
 import { ShoppingListComponent } from './component/shopping-list/shopping-list.component';
+import { ShoppingEditComponent } from './component/shopping-list/shopping-edit/shopping-edit.component';
 
 @NgModule({
   declarations: [
@@ -16,9 +19,12 @@ import { ShoppingListComponent } from './component/shopping-list/shopping-list.c
     Header, 
     Footer, 
     IngredientComponent, 
+    RecipesComponent,
     RecipeListComponent,
-    ShoppingListComponent,
-    ShoppingItemEditComponent
+    RecipeItemComponent,
+    RecipeDetailComponent, 
+    ShoppingListComponent, 
+    ShoppingEditComponent
   ],
   imports: [
     BrowserModule,
