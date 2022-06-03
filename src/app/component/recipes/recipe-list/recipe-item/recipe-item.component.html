@@ -1,1 +1,12 @@
-<p>recipe-item-component</p>
+<a href="#" class="list-group-item clearfix">
+  <div class="pull-left">
+    <div class="list-group-item-heading">{{name}}</div>
+    <p class="list-group-item-text">{{description}}</p>
+  </div>
+  <span class="pull-right">
+    <img [src]="imagePath" 
+    [alt]="name" 
+    class="img-responsive"
+      style="max-height: 50px;">
+  </span>
+</a>

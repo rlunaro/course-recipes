@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector : 'recipe-item',
   templateUrl : './recipe-item.component.html'
 })
-export class RecipeItemComponent{
+export class RecipeItemComponent {
 
-  constructor() {}
+  @Input() name : string;
+  @Input() description : string;
+  @Input() imagePath : string; 
 
+  constructor( ) { }
 }
