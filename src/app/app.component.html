@@ -1,11 +1,10 @@
-<app-header></app-header>
+<app-header (selection)="onNavigate($event)"></app-header>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
       <h2>I am working</h2>
-      <app-ingredient></app-ingredient>
-      <recipes></recipes>
-      <app-shopping-list></app-shopping-list>
+      <recipes *ngIf="selection==='recipes'"></recipes>
+      <app-shopping-list *ngIf="selection==='shopping_list'"></app-shopping-list>
     </div>
   </div>
 </div>

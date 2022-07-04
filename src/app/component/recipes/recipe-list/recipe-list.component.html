@@ -4,11 +4,8 @@
   </div>
 </div>
 <hr/>
-<div class="row" *ngFor="let recipe of recipes">
-  <div class="col-xs-12">
-    <recipe-item [name]="recipe.name"
-          [description]="recipe.description"
-          [imagePath]="recipe.imagePath" ></recipe-item>
-  </div>
-</div>
+<recipe-item *ngFor="let recipe_item of recipes" 
+  [recipe]="recipe_item"
+  (selectedRecipe)="onSelectedRecipe($event)"
+  ></recipe-item>
 
