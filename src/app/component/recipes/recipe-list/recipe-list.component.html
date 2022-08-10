@@ -4,8 +4,7 @@
   </div>
 </div>
 <hr/>
-<recipe-item *ngFor="let recipe_item of recipes" 
+<recipe-item *ngFor="let recipe_item of recipeService.getRecipes()" 
   [recipe]="recipe_item"
-  (selectedRecipe)="onSelectedRecipe($event)"
   ></recipe-item>
 
