@@ -1,0 +1,17 @@
+
+
+
+Normally, ``npm install`` should do the trick. However, 
+always there are problems with the dependencies. 
+
+**How to fix them?**
+
+First, edit the file ``package.json`` and replace all the
+versions like ``^11.0.5`` to ``>=11.0.5``.
+
+You will probably need to replace also the versions like 
+``~4.0.3`` to ``>=4.0.3`` to achieve a correct installation.
+
+And run ``npm install``: ``npm`` then will try to find a 
+correct dependency set.
+

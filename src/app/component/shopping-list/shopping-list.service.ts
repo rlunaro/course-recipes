@@ -16,7 +16,12 @@ export class ShoppingListService {
   }
 
   public addIngredient( ingredient : Ingredient ) : void  {
-    this.ingredients.push( ingredient );
+    let ingredientExists = this.ingredients.find( (elem) => elem.name === ingredient.name );
+    if( ingredientExists ){
+      ingredientExists.amount += ingredient.amount;
+    }else{
+      this.ingredients.push( ingredient );
+    }
     this.onNewIngredient.emit( ingredient );
   }
 
