@@ -8,12 +8,14 @@ export class RecipeService {
   @Output() selectedRecipe = new EventEmitter<Recipe>();
   
   private recipes : Recipe [] = [
-    new Recipe( "Croquetas", 
+    new Recipe( 0, 
+              "Croquetas", 
               "Croquetas muy ricas", 
               "https://i.blogs.es/36d336/650_1000_croquetas2/1366_2000.jpg",
               [ new Ingredient( 'harina', 1 ), 
               new Ingredient('pan rallado', 1 )] ),
-    new Recipe( "Bacalao al pil pil", 
+    new Recipe( 1, 
+              "Bacalao al pil pil", 
               "Un clásico del bacalao", 
               "https://www.miscosillasdecocina.com/wp-content/uploads/2014/02/bacalao-pilpil-e1491084486535.jpg",
               [ new Ingredient( 'bacalao', 1 ), 
@@ -23,6 +25,10 @@ export class RecipeService {
 
   public getRecipes() : Recipe[] {
     return this.recipes.slice();
+  }
+
+  public getRecipe( recipeId : number ) : Recipe {
+    return this.recipes[recipeId];
   }
 
 }

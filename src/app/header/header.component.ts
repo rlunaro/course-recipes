@@ -2,21 +2,15 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector : 'app-header',
-  templateUrl : './header.component.html'
-
+  templateUrl : './header.component.html',
+  styleUrls : ['./header.component.css' ]
 })
 export class Header implements OnInit {
 
-  @Output() selection = new EventEmitter<string>();
-
-  public collapsed : boolean = true;
+  public collapsed : boolean = false;
 
   constructor() {}
 
   ngOnInit() : void {}
-
-  public onSelect( selection : string ){
-    this.selection.emit( selection );
-  }
 
 }

@@ -7,10 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'course-recipes';
-
-  selection = 'recipes';
-
-  public onNavigate( selection : string ){
-    this.selection = selection;
-  }
 }
