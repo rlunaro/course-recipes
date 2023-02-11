@@ -15,3 +15,10 @@ You will probably need to replace also the versions like
 And run ``npm install``: ``npm`` then will try to find a 
 correct dependency set.
 
+And don't forget to enable strictTemplates in tsconfig.json: 
+
+  "angularCompilerOptions":{
+    "strictTemplates" : true
+  }
+
+  
