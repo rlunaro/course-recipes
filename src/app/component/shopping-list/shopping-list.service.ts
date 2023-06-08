@@ -10,8 +10,13 @@ import { Ingredient } from "src/app/shared/ingredient.model";
 export class ShoppingListService {
 
   onNewIngredient = new Subject<Ingredient>();
+  startedEditing = new Subject<number>();
 
   private ingredients : Ingredient[] = [];
+
+  public getIngredient( ingredient : number ) {
+    return this.ingredients[ingredient];
+  }
 
   public getIngredients() : Ingredient[] {
     return this.ingredients;
@@ -25,6 +30,17 @@ export class ShoppingListService {
       this.ingredients.push( ingredient );
     }
     this.onNewIngredient.next( ingredient );
+  }
+
+  public updateIngredient( ingredientIndex : number, 
+                           ingredient: Ingredient ) : void {
+    this.ingredients[ingredientIndex] = ingredient; 
+    this.onNewIngredient.next( ingredient );
+  }
+
+  public deleteIngredient( ingredientIndex : number ){
+    this.ingredients.splice( ingredientIndex, 1 );
+    this.onNewIngredient.next( null ); 
   }
 
 }
