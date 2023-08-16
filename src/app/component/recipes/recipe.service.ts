@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 
-import { Ingredient } from "src/app/shared/ingredient.model";
 import { Recipe } from "./recipe.model";
 import { Subject } from "rxjs";
 
@@ -10,23 +9,15 @@ import { Subject } from "rxjs";
 export class RecipeService {
 
   public recipesChanged : Subject<Recipe[]> = new Subject<Recipe[]>();
-  private recipes : Recipe [] = [
-    new Recipe( 0, 
-              "Croquetas", 
-              "Croquetas muy ricas", 
-              "https://i.blogs.es/36d336/650_1000_croquetas2/1366_2000.jpg",
-              [ new Ingredient( 'harina', 1 ), 
-              new Ingredient('pan rallado', 1 )] ),
-    new Recipe( 1, 
-              "Bacalao al pil pil", 
-              "Un clásico del bacalao", 
-              "https://www.miscosillasdecocina.com/wp-content/uploads/2014/02/bacalao-pilpil-e1491084486535.jpg",
-              [ new Ingredient( 'bacalao', 1 ), 
-                new Ingredient( 'aceite de oliva', 1 )] )
-            ];
+  private recipes : Recipe [] = [];
 
   public getRecipes() : Recipe[] {
     return this.recipes;
+  }
+
+  public setRecipes( recipes : Recipe[] ) : void {
+    this.recipes = recipes;
+    this.recipesChanged.next( this.recipes );
   }
 
   public getRecipe( recipeId : number ) : Recipe {

@@ -9,14 +9,15 @@
     <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true">
       <ul class="nav navbar-nav">
         <li [routerLinkActive]="['active']"><a [routerLink]="['/recipes']" [routerLinkActive]="['navigation-bar-selected']">Recipes</a></li>
+        <li [routerLinkActive]="['active']"><a [routerLink]="['/auth']" [routerLinkActive]="['navigation-bar-selected']">Sign in/Sign up</a></li>
         <li [routerLinkActive]="['active']"><a [routerLink]="['/shopping-list']" [routerLinkActive]="['navigation-bar-selected']">Shopping list</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown" appDropdown>
           <a style="cursor: pointer;" class="dropdown-toogle" role="button">Manage <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a style="cursor: pointer;">Save data</a></li>
-            <li><a style="cursor: pointer;">Fetch data</a></li>
+            <li><a style="cursor: pointer;" (click)="storeRecipes()">Save data</a></li>
+            <li><a style="cursor: pointer;" (click)="fetchRecipes()">Fetch data</a></li>
           </ul>
         </li>
       </ul>
