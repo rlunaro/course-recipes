@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Header } from './header/header.component';
 import { Footer } from './footer/footer.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { IngredientComponent } from './component/ingredient/ingredient.component';
 import { RecipesComponent } from './component/recipes/recipes.component';
 import { RecipeListComponent } from './component/recipes/recipe-list/recipe-list.component';
@@ -26,6 +27,7 @@ import { AuthComponent } from './auth/auth.component';
     AppComponent,
     Header, 
     Footer, 
+    LoadingSpinnerComponent,
     AuthComponent,
     IngredientComponent, 
     RecipesComponent,
