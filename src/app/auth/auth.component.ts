@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { NgForm } from "@angular/forms";
-
+import { Router } from '@angular/router';
 
 import { AuthResponseData, AuthService } from "./auth.service";
 import { Observable } from "rxjs";
@@ -27,7 +27,7 @@ export class AuthComponent {
         USER_DISABLED: { en: 'The user account has been disabled by an administrator' }
         };
 
-  constructor( private auth : AuthService ){}
+  constructor( private auth : AuthService, private router : Router ){}
 
   switchMode(){
     this.isLoginMode = !this.isLoginMode;
@@ -53,13 +53,19 @@ export class AuthComponent {
       next : (response: AuthResponseData ) => {
         console.log( response );
         this.isLoading = false;
+        this.router.navigate( ['/recipes'] );
       }, 
       error:  (error) => {
-        let errorKey = error.error.error.message;
-        if( errorKey in this.errorMsgs )
-          this.error = this.errorMsgs[errorKey]['en'];
-        else
-          this.error = `An error with code ${errorKey} was produced`;
+        let errorKey = error?.error?.error?.message;
+        if( errorKey ){
+          if( errorKey in this.errorMsgs )
+            this.error = this.errorMsgs[errorKey]['en'];
+          else
+            this.error = `An error with code ${errorKey} was produced`;
+        }else{
+          console.error( error ); 
+          this.error = 'Unknown error';
+        }
         this.isLoading = false;
       }
     });

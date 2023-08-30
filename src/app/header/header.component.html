@@ -8,12 +8,20 @@
     </div>
     <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true">
       <ul class="nav navbar-nav">
-        <li [routerLinkActive]="['active']"><a [routerLink]="['/recipes']" [routerLinkActive]="['navigation-bar-selected']">Recipes</a></li>
-        <li [routerLinkActive]="['active']"><a [routerLink]="['/auth']" [routerLinkActive]="['navigation-bar-selected']">Sign in/Sign up</a></li>
-        <li [routerLinkActive]="['active']"><a [routerLink]="['/shopping-list']" [routerLinkActive]="['navigation-bar-selected']">Shopping list</a></li>
+        <li [routerLinkActive]="['active']" *ngIf="isAuthenticated">
+          <a [routerLink]="['/recipes']" 
+              [routerLinkActive]="['navigation-bar-selected']"
+              >Recipes</a></li>
+        <li [routerLinkActive]="['active']" *ngIf="!isAuthenticated">
+            <a [routerLink]="['/auth']" [routerLinkActive]="['navigation-bar-selected']">Authenticate</a></li>
+        <li [routerLinkActive]="['active']">
+          <a [routerLink]="['/shopping-list']" [routerLinkActive]="['navigation-bar-selected']">Shopping list</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown" appDropdown>
+        <li>
+          <a style="cursor: pointer;" *ngIf="isAuthenticated" (click)="logout()">Logout</a>
+        </li>
+        <li class="dropdown" appDropdown *ngIf="isAuthenticated">
           <a style="cursor: pointer;" class="dropdown-toogle" role="button">Manage <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a style="cursor: pointer;" (click)="storeRecipes()">Save data</a></li>
