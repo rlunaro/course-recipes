@@ -1,10 +1,11 @@
-import { Component } from "@angular/core";
+import { Component, ComponentFactoryResolver, ViewChild } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from '@angular/router';
 
 import { AuthResponseData, AuthService } from "./auth.service";
 import { Observable } from "rxjs";
-
+import { AlertComponent } from "../shared/alert/alert.component";
+import { PlaceholderDirective } from "../shared/placeholder/placeholder.directive";
 
 @Component({
   selector: 'app-auth', 
@@ -17,6 +18,7 @@ export class AuthComponent {
   public error : string = null;
   public email : string; 
   public password: string; 
+  @ViewChild( PlaceholderDirective, {static: false} ) alertHost : PlaceholderDirective;
 
   private errorMsgs = {
         EMAIL_EXISTS: { en: 'The email address is already in use by another account' },
@@ -27,7 +29,9 @@ export class AuthComponent {
         USER_DISABLED: { en: 'The user account has been disabled by an administrator' }
         };
 
-  constructor( private auth : AuthService, private router : Router ){}
+  constructor( private auth : AuthService, 
+               private router : Router, 
+               private componentFactoryResolver : ComponentFactoryResolver ){}
 
   switchMode(){
     this.isLoginMode = !this.isLoginMode;
@@ -66,11 +70,19 @@ export class AuthComponent {
           console.error( error ); 
           this.error = 'Unknown error';
         }
+        this.showErrorAlert();
         this.isLoading = false;
       }
     });
 
     formValue.reset();
+  }
+
+  private showErrorAlert() {
+    // let componentFactory = this.componentFactoryResolver.resolveComponentFactory( AlertComponent );
+    let hostViewContainer = this.alertHost.viewContainerRef;
+    hostViewContainer.clear();
+    hostViewContainer.createComponent( AlertComponent );
   }
 
 }
