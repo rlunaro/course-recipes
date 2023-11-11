@@ -10,10 +10,7 @@ import { Footer } from './footer/footer.component';
 import { IngredientComponent } from './component/ingredient/ingredient.component';
 import { ShoppingListService } from './component/shopping-list/shopping-list.service';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
-import { RecipesModule } from './component/recipes/recipes.module';
-import { ShoppingListModule } from './component/shopping-list/shopping-list.module';
 import { SharedModule } from './shared/shared.module';
-import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -27,10 +24,7 @@ import { AuthModule } from './auth/auth.module';
     FormsModule, 
     HttpClientModule, 
     AppRoutingModule, 
-    ShoppingListModule,
-    RecipesModule,
-    SharedModule,
-    AuthModule
+    SharedModule
   ],
   providers: [ShoppingListService,
             {provide: HTTP_INTERCEPTORS, 

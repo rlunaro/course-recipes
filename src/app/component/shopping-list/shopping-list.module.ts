@@ -7,7 +7,6 @@ import { ShoppingEditComponent } from "./shopping-edit/shopping-edit.component";
 import { ShoppingListRoutingModule } from "./shopping-list-routing.module";
 import { SharedModule } from "src/app/shared/shared.module";
 
-
 @NgModule({
   declarations: [
     ShoppingListComponent, 

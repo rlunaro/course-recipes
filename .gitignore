@@ -2,6 +2,8 @@
 
 # Configuration files 
 /src/environments/*
+.firebaserc
+firebase.json
 
 # Compiled output
 /dist
